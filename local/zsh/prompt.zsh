@@ -3,7 +3,7 @@
 FUNCNEST=10000
 
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
+    debian_chroot=$(cat -p /etc/debian_chroot)
 fi
 
 if whence tput >/dev/null && (( $(tput colors 2>/dev/null) >= 8 )); then
