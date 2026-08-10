@@ -14,7 +14,7 @@ export VISUAL="nvim"
 
 # ---------- Pager ----------
 export MANROFFOPT="-c"
-export MANPAGER="sh -c 'col -bx | bat -plman -A'"
+export MANPAGER="sh -c 'col -bx | bat -plman'"
 
 # ---------- GPG ----------
 export GPG_TTY=$(tty)
