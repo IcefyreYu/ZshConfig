@@ -33,7 +33,7 @@ export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}";
 
 # ---------- PATH ----------
 # Personal binaries/scripts
-export PATH="$PATH"
+export PATH="$PATH:/home/icefyre/.local/bin"
 export PATH="$PATH:/home/icefyre/.cargo/bin"
 export PATH="$PATH:/home/icefyre/.radicle/bin"
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin"
