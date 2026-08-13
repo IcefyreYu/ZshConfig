@@ -1,5 +1,7 @@
 # ~/.config/zsh/prompt.zsh
 
+autoload -Uz add-zsh-hook
+
 FUNCNEST=10000
 
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -23,3 +25,10 @@ xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty)
 *)
     ;;
 esac
+
+preexec_title() { print -Pnr -- $'\e]0;$1\a' }
+precmd_title() { print -Pnr -- "$TERM_TITLE" }
+
+add-zsh-hook preexec preexec_title
+add-zsh-hook precmd precmd_title
+

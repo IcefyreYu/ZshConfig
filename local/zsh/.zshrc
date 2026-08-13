@@ -96,9 +96,6 @@ source "$ZDOTDIR/plugins.zsh"
 source "$ZDOTDIR/prompt.zsh"
 
 precmd() {
-  # Set title ($TERM_TITLE is defined in $ZDOTDIR/prompt.zsh)
-  print -Pnr -- "$TERM_TITLE"
-
   # Print a new line before the prompt
   if [ -z "$_NEW_LINE_BEFORE_PROMPT" ]; then
     _NEW_LINE_BEFORE_PROMPT=1
