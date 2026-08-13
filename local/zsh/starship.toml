@@ -2,46 +2,76 @@
 
 add_newline = false
 
-format = "$directory$os$git_branch$git_status$nodejs$rust$golang$php$character"
+format = """
+$time$os$directory$git_branch$git_status$python$nodejs$rust$golang$php$jobs$sudo$fill$cmd_duration$status
+$character"""
+
+[time]
+format = '[ $time]($style) '
+disabled = false
 
 [os]
 disabled = false
 format = "[$symbol](purple) "
 
 [os.symbols]
-Ubuntu  = "󰕈"
-Artix   = "󰣇"
-Arch    = "󰣇"
+Ubuntu = "󰕈"
+Artix = "󰣇"
+Arch = "󰣇"
 CachyOS = "󰣇"
-Macos   = ""
-Kali    = "㉿"
+Macos = ""
+Kali = " "
 
 [directory]
-format            = "[$path](cyan) "
+format = "[$path](cyan) "
 truncation_length = 4
-truncate_to_repo  = true
+truncate_to_repo = true
 
 [git_branch]
 symbol = ""
 format = "[$symbol $branch](bold purple) "
 
 [git_status]
-format     = "($ahead_behind$staged$modified$untracked$deleted$conflicted)"
-ahead      = "[⇡$count ](bold cyan)"
-behind     = "[⇣$count ](bold cyan)"
-diverged   = "[⇡$ahead_count⇣$behind_count ](bold cyan)"
-staged     = "[+$count ](bold green)"
-modified   = "[●$count ](bold yellow)"
-untracked  = "[?$count ](bold white)"
-deleted    = "[✘$count ](bold red)"
-conflicted = "[⚡$count ](bold red)"
+format = "($ahead_behind$staged$modified$untracked$deleted$conflicted)"
+ahead = "[⇡$count ](bold cyan)"
+behind = "[⇣$count ](bold cyan)"
+diverged = "[⇡$ahead_count⇣$behind_count ](bold cyan)"
+staged = "[+$count ](bold green)"
+modified = "[●$count ](bold yellow)"
+untracked = "[?$count ](bold white)"
+deleted = "[✘$count ](bold red)"
+conflicted = "[󱐋$count ](bold red)"
+
+[jobs]
+symbol = " "
+
+[sudo]
+disabled = false
+symbol = "󱓬 "
+format = "[$symbol]($style) "
+
+[fill]
+symbol = ' '
+
+[cmd_duration]
+min_time = 500
+show_milliseconds = true
+format = "  [$duration]($style)"
+
+[status]
+disabled = false
+format = "[  $status $common_meaning]($style)"
+
+[python]
+symbol = "󰌠"
+format = '[$symbol $version( \($virtualenv\))](yellow) '
 
 [nodejs]
 symbol = ""
 format = "[$symbol $version](green) "
 
 [rust]
-symbol = ""
+symbol = "󱘗"
 format = "[$symbol $version](red) "
 
 [golang]
@@ -54,5 +84,5 @@ format = "[$symbol $version](purple) "
 
 [character]
 success_symbol = "[❯](green)"
-error_symbol   = "[❯](red)"
-vimcmd_symbol  = "[❮](blue)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](blue)"
