@@ -15,19 +15,26 @@ ZVM_VI_HIGHLIGHT_EXTRASTYLE=none
 # zsh-vi-mode resets all bindings on init, so custom bindings
 # must be registered via this hook to survive.
 zvm_after_init() {
-  # Ctrl+Right -> move forward one word (^[[1;5C is the terminal escape code)
-  bindkey '^[[1;5C' forward-word
+	# Ctrl+Right -> move forward one word (^[[1;5C is the terminal escape code)
+	bindkey '^[[1;5C' forward-word
 
-  # Ctrl+Left -> move backward one word (^[[1;5D is the terminal escape code)
-  bindkey '^[[1;5D' backward-word
+	# Ctrl+Left -> move backward one word (^[[1;5D is the terminal escape code)
+	bindkey '^[[1;5D' backward-word
 
-  # Ctrl+F -> fzf file picker (no hidden files)
-  bindkey '^F' _fzf_file_no_hidden
+	# Ctrl+F -> fzf file picker (no hidden files)
+	bindkey '^F' _fzf_file_no_hidden
 
-  # Ctrl+\ -> toggle autosuggestions (useful for screen recordings)
-  bindkey '^\' autosuggest-toggle
+	# Ctrl+\ -> toggle autosuggestions (useful for screen recordings)
+	bindkey '^\' autosuggest-toggle
 
-  # Up/Down -> history search by substring (^[[A/^[[B are up/down arrow escape codes)
-  bindkey '^[[A' history-substring-search-up
-  bindkey '^[[B' history-substring-search-down
+	# Up/Down -> history search by substring (^[[A/^[[B are up/down arrow escape codes)
+	bindkey '^[[A' history-substring-search-up
+	bindkey '^[[B' history-substring-search-down
+
+	# Page Up/Down
+	bindkey '^[[5~' beginning-of-buffer-or-history
+	bindkey '^[[6~' end-of-buffer-or-history
+
+	# Magic Space
+	bindkey ' ' magic-space
 }
