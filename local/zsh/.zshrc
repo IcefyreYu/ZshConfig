@@ -31,7 +31,7 @@ setopt HIST_FIND_NO_DUPS
 
 setopt AUTOCD
 setopt NOBEEP
-setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
+setopt NUMERIC_GLOB_SORT # sort file10 after file9, not after file1
 setopt interactivecomments
 setopt promptsubst
 
@@ -57,7 +57,7 @@ zstyle ':completion:*' menu select
 
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # lowercase input matches upper and lower
 
 # =========================================================
 # Command Not Found
@@ -71,8 +71,8 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matche
 
 # Ubuntu
 if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
-  source /usr/share/doc/fzf/examples/key-bindings.zsh
-  source /usr/share/doc/fzf/examples/completion.zsh
+	source /usr/share/doc/fzf/examples/key-bindings.zsh
+	source /usr/share/doc/fzf/examples/completion.zsh
 fi
 
 # =========================================================
@@ -93,15 +93,6 @@ source "$ZDOTDIR/plugins.zsh"
 
 # Prompt/theme/title
 source "$ZDOTDIR/prompt.zsh"
-
-precmd() {
-  # Print a new line before the prompt
-  if [ -z "$_NEW_LINE_BEFORE_PROMPT" ]; then
-    _NEW_LINE_BEFORE_PROMPT=1
-  else
-    print ""
-  fi
-}
 
 # =========================================================
 # Node / NVM
