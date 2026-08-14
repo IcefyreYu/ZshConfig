@@ -34,6 +34,7 @@ setopt NOBEEP
 setopt NUMERIC_GLOB_SORT # sort file10 after file9, not after file1
 setopt interactivecomments
 setopt promptsubst
+setopt magicequalsubst
 
 # =========================================================
 # Smart directory navigation
@@ -51,6 +52,10 @@ autoload -Uz compinit
 
 # Initialize completion with cached metadata file
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
+
+# uv completion
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
 
 # Enable interactive completion menu selection
 zstyle ':completion:*' menu select
