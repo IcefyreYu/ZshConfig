@@ -60,9 +60,21 @@ eval "$(uvx --generate-shell-completion zsh)"
 # Enable interactive completion menu selection
 zstyle ':completion:*' menu select
 
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # lowercase input matches upper and lower
+
+zstyle ':completion:*' rehash true
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' verbose true
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 # =========================================================
 # Command Not Found
