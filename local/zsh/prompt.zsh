@@ -22,6 +22,17 @@ xterm* | rxvt* | Eterm | aterm | kterm | gnome* | alacritty)
 *) ;;
 esac
 
+_greeting_once() {
+	print Welcome $USERNAME!
+	date "+%Y.%m.%d. %H:%M:%S %Z%n%n"
+	fastfetch
+	print
+
+	add-zsh-hook -d precmd _greeting_once
+}
+
+add-zsh-hook precmd _greeting_once
+
 preexec_title() { print -Pnr -- $'\e]0;$1\a'; }
 precmd_title() { print -Pnr -- "$TERM_TITLE"; }
 
