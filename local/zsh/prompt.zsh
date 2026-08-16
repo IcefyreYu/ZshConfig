@@ -34,15 +34,17 @@ else
 fi
 
 # Transient Prompt
+DISABLE_TRANSIENT=1
+
 set-long-prompt() {
-	PROMPT='$(starship prompt)'
+	PROMPT='$(starship prompt --terminal-width="$COLUMNS" --keymap="${KEYMAP:-}" --status="${STARSHIP_CMD_STATUS:-}" --pipestatus="${STARSHIP_PIPE_STATUS[*]:-}" --cmd-duration="${STARSHIP_DURATION:-}" --jobs="$STARSHIP_JOBS_COUNT")'
+	RPROMPT='$(starship prompt --right --terminal-width="$COLUMNS" --keymap="${KEYMAP:-}" --status="${STARSHIP_CMD_STATUS:-}" --pipestatus="${STARSHIP_PIPE_STATUS[*]:-}" --cmd-duration="${STARSHIP_DURATION:-}" --jobs="$STARSHIP_JOBS_COUNT")'
+	PROMPT2="$(starship prompt --continuation)"
 }
 
 set-short-prompt() {
 	PROMPT='$(starship module character)'
 }
-
-add-zsh-hook precmd set-long-prompt
 
 accept-line() {
 	set-short-prompt
@@ -50,7 +52,11 @@ accept-line() {
 	zle .reset-prompt
 	zle .accept-line
 }
-zle -N accept-line
+
+if [ "$DISABLE_TRANSIENT" = 0 ]; then
+	add-zsh-hook precmd set-long-prompt
+	zle -N accept-line
+fi
 
 # Newline for Prompt
 add-newline() {
